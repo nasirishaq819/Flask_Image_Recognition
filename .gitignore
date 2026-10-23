@@ -1,0 +1,19 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# IDE settings
+.idea/
+.vscode/
+
+# Test and lint caches
+.pytest_cache/
+.pylint.d/
+.mypy_cache/
+
+# Local environment files
+.env

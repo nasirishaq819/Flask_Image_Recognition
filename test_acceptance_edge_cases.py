@@ -145,3 +145,18 @@ def test_edge_case_upload_over_http2(client):
 
     # Ensure that the image upload works successfully over HTTP/2
     assert b"Prediction" in response.data
+
+
+# 7. Edge Case: Uploading an Invalid Text File
+def test_edge_case_invalid_text_file(client):
+    """Verify that a text file produces an error message."""
+    invalid_file = BytesIO(b"This is not a valid image.")
+
+    response = client.post(
+        "/prediction",
+        data={"file": (invalid_file, "invalid_file.txt")},
+        content_type="multipart/form-data"
+    )
+
+    assert response.status_code == 200
+    assert b"File cannot be processed" in response.data
